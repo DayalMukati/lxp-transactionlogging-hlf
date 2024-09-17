@@ -92,10 +92,8 @@ createChannel
 successln "Channel '$CHANNEL_NAME' created"
 
 ## Join all the peers to the channel
-infoln "Joining org1 peer0 to the channel..."
+infoln "Joining org1 peer to the channel..."
 joinChannel 1
-infoln "Joining org1 peer1 to the channel..."
-joinChannel 4
 infoln "Joining org2 peer to the channel..."
 joinChannel 2
 
