@@ -22,62 +22,17 @@ type Transaction struct {
 
 // LogTransaction logs a new transaction
 func (t *TransactionLog) LogTransaction(ctx contractapi.TransactionContextInterface, transactionID string, sender string, receiver string, amount float64) error {
-	transaction := Transaction{
-		TransactionID: transactionID,
-		Sender:        sender,
-		Receiver:      receiver,
-		Amount:        amount,
-	}
-
-	transactionAsBytes, _ := json.Marshal(transaction)
-
-	return ctx.GetStub().PutState(transactionID, transactionAsBytes)
+	// Write the logic to log the transaction
 }
 
 // QueryTransaction retrieves a specific transaction by ID
 func (t *TransactionLog) QueryTransaction(ctx contractapi.TransactionContextInterface, transactionID string) (*Transaction, error) {
-	transactionAsBytes, err := ctx.GetStub().GetState(transactionID)
-
-	if err != nil {
-		return nil, fmt.Errorf("failed to read from world state. %s", err.Error())
-	}
-
-	if transactionAsBytes == nil {
-		return nil, fmt.Errorf("transaction %s does not exist", transactionID)
-	}
-
-	transaction := new(Transaction)
-	_ = json.Unmarshal(transactionAsBytes, transaction)
-
-	return transaction, nil
+	// Write the logic to query a transaction by ID
 }
 
 // QueryAllTransactions returns all logged transactions
 func (t *TransactionLog) QueryAllTransactions(ctx contractapi.TransactionContextInterface) ([]Transaction, error) {
-	startKey := ""
-	endKey := ""
-
-	resultsIterator, err := ctx.GetStub().GetStateByRange(startKey, endKey)
-
-	if err != nil {
-		return nil, err
-	}
-	defer resultsIterator.Close()
-
-	var transactions []Transaction
-	for resultsIterator.HasNext() {
-		queryResponse, err := resultsIterator.Next()
-
-		if err != nil {
-			return nil, err
-		}
-
-		var transaction Transaction
-	 _ = json.Unmarshal(queryResponse.Value, &transaction)
-		transactions = append(transactions, transaction)
-	}
-
-	return transactions, nil
+	// Write the logic to query all transactions
 }
 
 func main() {
