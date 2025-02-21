@@ -1,0 +1,2 @@
+Installed chaincodes on peer:
+Package ID: transactionlog_1.0:2d8b080b1ba2cb16e30ef7b825c852f00c12af2f443fd2dc914e57db13932bee, Label: transactionlog_1.0
