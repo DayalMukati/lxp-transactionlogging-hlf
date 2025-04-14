@@ -1,4 +1,4 @@
-module txlogging-chaincode
+module transactionlog-chaincode
 
 go 1.17
 
